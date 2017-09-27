@@ -1,0 +1,71 @@
+<div id="nav" ng-include="'./include/navProfessor.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">lista de academias</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section>
+    <div class="col-md-12" style="float: none">
+      <div class="card">
+        <div class="card-header" data-background-color="green">
+          <h4 class="titleList">Academias</h4>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+              <tr>
+                <th>NOMBRE</th>
+                <th>DIRECCIÓN</th>
+                <th>TÉLEFONO</th>
+                <th>ENCARGADO</th>
+                <th>ESTADO</th>
+                <th>LOGO</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="academy in academyctrl.Academys | filter:ctrl.nameFilter">
+                <td>{{academy.name}}</td>
+                <td>{{academy.address}}</td>
+                <td>{{academy.number}}</td>
+                <td>{{academy.contact}} {{academy.secondName}} {{academy.lastName}} {{academy.secondlastName}}</td>
+                <td>{{academy.status}}</td>
+                <td><img height="50px" width="50px" ng-src="{{academy.image}}"></td>
+                <!--                 <td><input type="button" value="Editar" class="btnEdit" ng-click="ctrl.getInfo(userProfesor)"></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </section>
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>

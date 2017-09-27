@@ -1,0 +1,89 @@
+  <!-- Navigation -->
+  <div id="navigation">
+    <nav class="navbar navbar-custom" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="site-logo">
+              <a href="index.html" class="brand">FCT</a>
+            </div>
+          </div>
+
+
+
+          <div class="col-md-10">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <i class="fa fa-bars"></i>
+              </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menu">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="nav-text">Registros</span></a>
+                  <ul class="dropdown-menu">
+                  <li><a href="#!/regAcademys"><i class="fa"></i><span class="nav-text">Registro de Academias</span></a></li>
+                    <li><a href="#!/regStudent"><i class="fa"></i><span class="nav-text">Registro de Alumnos</span></a></li>
+                    <li><a href="#!/regAssociation"><i class="fa"></i><span class="nav-text">Registro de Asociación</span></a></li>
+                    <li><a href="#!/regFight"><i class="fa"></i><span class="nav-text">Registro de Combates</span></a></li>
+                    <li><a href="#!/regEvent"><i class="fa"></i><span class="nav-text">Registro de Eventos</span></a></li>
+                    <li><a href="#!/regPlaces"><i class="fa"></i><span class="nav-text">Registro de Lugar</span></a></li>
+                    <li><a href="#!/regProfessor"><i class="fa"></i><span class="nav-text">Registro de Profesores</span></a></li>
+                    
+                  </ul>
+                </li>
+                <li><a href="#!/inscription">Inscribir Competidores</a></li>
+               <li><a href="#!/reserve">Reserva de Entradas</a></li>
+                <li class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-text">Consultas</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="#!/logbook"><span class="nav-text">Bitácora</span></a></li>
+                <li><a href="#!/competitorsEvents"><span class="nav-text">Competidores en eventos</span></a></li>
+                <li><a href="#!/gallery"><span class="nav-text">Galería</span></a></li>
+                <li><a href="#!/placesList"><span class="nav-text">Lugares de Eventos</span></a></li>
+                <li><a href="#!/weight"><span class="nav-text">Pesaje de Competidores</span></a></li>
+                <li><a href="#!/propEvent"><span class="nav-text">Propuesta de Eventos</span></a></li>
+                 <li><a href="#!/regSponsor">Patrocinar Evento</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-text">Listados</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="#!/academysList"><i class="fa"></i><span class="nav-text">Listado de Academias</span></a></li>
+                <li><a href="#!/associationList"><span class="nav-text">Listado de Asociaciones</span></a></li>
+                <li><a href="#!/studentList"><span class="nav-text">Listado de Alumnos</span></a></li>
+                <li><a href="#!/fightList"><span class="nav-text">Listado de Combates</span></a></li>
+                <li><a href="#!/consultEvent"><span class="nav-text">Listado de Eventos</span></a></li>
+                <li><a href="#!/sponsorList"><span class="nav-text">Listado de Patrocinadores</span></a></li>
+                <li><a href="#!/professorList"><span class="nav-text">Listado de Profesores</span></a></li>
+                <li><a href="#!/consultPropEvent"><span class="nav-text">Listado de Propuestas</span></a></li>
+                <li><a href="#!/ranking"><span class="nav-text">Listado de Ranking</span></a></li>
+                <li><a href="#!/userList"><span class="nav-text">Listado de Usuarios</span></a></li>     
+                </ul>
+              </li>
+              <li><a href="#!/admin">Perfil</a></li>
+              <li ng-controller="UserController as vm" class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-text">Ajustes</span> <i class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu">
+                <li><a href="#!/landing"><span class="nav-text">Landing page</span></a></li>
+                <li><a href="" ng-click="vm.LogOut()"><span class="nav-text">Cerrar Sesión </span><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a></li>
+                </ul>
+              </li>
+              </ul>
+            </div>
+            <!-- /.Navbar-collapse -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </nav>
+  </div>
+  <!-- /Navigation -->

@@ -1,0 +1,281 @@
+<div id="nav" ng-include="'./include/navAdmin.html'"></div>
+<div class="clearfix"></div>
+  <section id="about" class="form-section color-dark bg-white">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="animatedParent">
+            <div class="section-heading text-center" style="margin-top:100px">
+              <h2 class="h-bold">Registrar Lugar</h2>
+              <div class="divider-header"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--   Big container   -->
+    <div ng-controller="PlacesController as placesctrl" class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- Wizard container -->
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="green" id="wizard">
+              <form name="frmRegAcademia" action="" method="">
+                <div class="wizard-navigation">
+                  <ul>
+                    <li><a href="#step1" data-toggle="tab">Localidad</a></li>
+                    <li><a href="#step2" data-toggle="tab">Encargado</a></li>
+                    <li><a href="#step3" data-toggle="tab">Horario</a></li>
+                  </ul>
+                </div>
+
+                <div class="tab-content">
+                  <div class="tab-pane" id="step1">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Nombre del lugar*</label>
+                          <input type="text" class="form-control" name="name" ng-model="placesctrl.name" required>
+                          <div ng-messages="frmRegAcademia.name.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.name.$dirty || (frmRegAcademia.name.$invalid && frmRegAcademia.name.$touched)">
+                            <div ng-hide="frmRegAcademia.name.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Capacidad de personas*</label>
+                          <input type="text" name="address" class="form-control" ng-model="placesctrl.address" required>
+                          <div ng-messages="frmRegAcademia.address.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.address.$dirty || (frmRegAcademia.address.$invalid && frmRegAcademia.address.$touched)">
+                            <div ng-hide="frmRegAcademia.address.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div id="google" name="google" action="#">
+                        <div class="col-sm-4 form-group ">
+                          <label class="">Ubicación:</label>
+			              <input type="text" class="form-control" id="direccion" name="direccion" ng-model="placesctrl.ubication" placeholder="Cartago,Costa Rica" required/>
+			             </div>
+			             <div class="col-sm-3 form-group "> 
+			              <button id="pasar" class="btn btn-skin">Buscar <i class="fa fa-search" aria-hidden="true"></i></button>
+			             </div>
+			            <div id="map_canvas" style="width:100%;height:400px;"></div>
+			            <input type="hidden" name="lat" id="lat" />
+			            <input type="hidden" name="lng" id="long" />
+			            <br>
+			          </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="step2">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Nombre encargado*</label>
+                          <input type="text" class="form-control" name="encargado" ng-model="placesctrl.contact" required>
+                          <div ng-messages="frmRegAcademia.encargado.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.encargado.$dirty || (frmRegAcademia.encargado.$invalid && frmRegAcademia.encargado.$touched)">
+                            <div ng-hide="frmRegAcademia.encargado.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Primer apellido*</label>
+                          <input name="lastName" type="text" class="form-control" ng-model="placesctrl.lastName" required>
+                          <div ng-messages="frmRegAcademia.lastName.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.lastName.$dirty || (frmRegAcademia.lastName.$invalid && frmRegAcademia.lastName.$touched)">
+                            <div ng-hide="frmRegAcademia.lastName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Segundo nombre</label>
+                          <input name="" type="text" class="form-control" ng-model="placesctrl.secondName">
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Segundo apellido*</label>
+                          <input name="secondlastName" type="text" class="form-control" ng-model="placesctrl.secondlastName" required>
+                          <div ng-messages="frmRegAcademia.secondlastName.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.secondlastName.$dirty || (frmRegAcademia.secondlastName.$invalid && frmRegAcademia.secondlastName.$touched)">
+                            <div ng-hide="frmRegAcademia.secondlastName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="step3">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="">Horario del lugar: inicio*</label>
+                          <input type="time" class="form-control" ng-model="placesctrl.start" min="" name="timestart" >
+                        </div>
+
+                        <div class="form-group label-floating">
+                          <label class="control-label">Teléfono*</label>
+                          <input type="text" class="form-control" name="number" ng-model="placesctrl.number"  ng-pattern="/^[0-9]{8}$/" required>
+                          <div ng-messages="frmRegAcademia.number.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.number.$dirty || (frmRegAcademia.number.$invalid && frmRegAcademia.number.$touched)">
+                            <div ng-hide="frmRegAcademia.number.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6" "style:position:absolute z-index:9998">
+                        <div class="form-group label-floating">
+                          <label class="">Horario del lugar: cierre*</label>
+                          <input type="time" class="form-control" ng-model="placesctrl.close" min="" name="timeFinish" >
+                        </div>
+
+                        <div class="col-md-6">
+                        <label>Foto del lugar</label>
+                        <input type="file" id="photo" ng-model="placesctrl.image">
+                      </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="wizard-footer">
+                  <div class="pull-right">
+                    <input type='button' class='btn btn-next btn-fill btn-skin' name='Siguiente' value='Siguiente' />
+                    <input type='button' class='btn btn-finish btn-fill btn-skin' name='Enviar' ng-click="placesctrl.preSave()" ng-disabled="frmRegAcademia.$invalid" value='Enviar' />
+                  </div>
+                  <div class="pull-left">
+                    <input type='button' class='btn btn-previous btn-fill btn-skin' name='Anterior' value='Anterior' />
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- wizard container -->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!--  big container -->
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+          <!-- <li><a href="#">Press release</a></li> -->
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>
+<script>
+  //Declaramos las variables que vamos a user
+var lat = null;
+var lng = null;
+var map = null;
+var geocoder = null;
+var marker = null;
+         
+jQuery(document).ready(function(){
+     //obtenemos los valores en caso de tenerlos en un formulario ya guardado en la base de datos
+     lat = jQuery('#lat').val();
+     lng = jQuery('#long').val();
+     //Asignamos al evento click del boton la funcion codeAddress
+     jQuery('#pasar').click(function(){
+        codeAddress();
+        return false;
+     });
+     //Inicializamos la función de google maps una vez el DOM este cargado
+    initialize();
+});
+     
+    function initialize() {
+     
+      geocoder = new google.maps.Geocoder();
+        
+       //Si hay valores creamos un objeto Latlng
+       if(lat !='' && lng != '')
+      {
+         var latLng = new google.maps.LatLng(lat,lng);
+      }
+      else
+      {
+        //Si no creamos el objeto con una latitud cualquiera como la de Mar del Plata, Argentina por ej
+         var latLng = new google.maps.LatLng(9.9258052,-84.0987546);
+      }
+      //Definimos algunas opciones del mapa a crear
+       var myOptions = {
+          center: latLng,//centro del mapa
+          zoom: 16,//zoom del mapa
+          mapTypeId: google.maps.MapTypeId.ROADMAP //tipo de mapa, carretera, híbrido,etc
+        };
+        //creamos el mapa con las opciones anteriores y le pasamos el elemento div
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+         
+        //creamos el marcador en el mapa
+        marker = new google.maps.Marker({
+            map: map,//el mapa creado en el paso anterior
+            position: latLng,//objeto con latitud y longitud
+            draggable: true //que el marcador se pueda arrastrar
+        });
+        
+       //función que actualiza los input del formulario con las nuevas latitudes
+       //Estos campos suelen ser hidden
+        updatePosition(latLng);
+        marker.addListener('click', toggleBounce);
+         
+         
+    }
+     
+    //funcion que traduce la direccion en coordenadas
+    function codeAddress() {
+         
+        //obtengo la direccion del formulario
+        var address = document.getElementById("direccion").value;
+        //hago la llamada al geodecoder
+        geocoder.geocode( { 'address': address}, function(results, status) {
+         
+        //si el estado de la llamado es OK
+        if (status == google.maps.GeocoderStatus.OK) {
+            //centro el mapa en las coordenadas obtenidas
+            map.setCenter(results[0].geometry.location);
+            //coloco el marcador en dichas coordenadas
+            marker.setPosition(results[0].geometry.location);
+            //actualizo el formulario      
+            updatePosition(results[0].geometry.location);
+             
+            //Añado un listener para cuando el markador se termine de arrastrar
+            //actualize el formulario con las nuevas coordenadas
+            google.maps.event.addListener(marker, 'dragend', function(){
+                updatePosition(marker.getPosition());
+            });
+      } else {
+          //si no es OK devuelvo error
+          alert("No podemos encontrar la direcci&oacute;n, error: " + status);
+      }
+    });
+  }
+   
+  //funcion que simplemente actualiza los campos del formulario
+  function updatePosition(latLng)
+  {
+       
+       jQuery('#lat').val(latLng.lat());
+       jQuery('#long').val(latLng.lng());
+   
+  }
+  function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+</script>
+

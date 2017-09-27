@@ -1,0 +1,122 @@
+<div ng-include="'include/navAdmin.html'"></div>
+<section id="registers" class="home-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center">
+            <h2 class="h-bold">Listado de combates</h2>
+            <div class="divider-header"></div>
+          </div>
+           <div class="text-center col-sm-offset-10 col-xs-offset-6">
+            <span class="fa fa-search"><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar Combates"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+    <div ng-repeat="fight in ctrl.fights | filter:ctrl.nameFilter" class="col-md-4 col-sm-6">
+      <div class="card-container manual-flip">
+        <div class="card">
+          <div class="front">
+            <div class="cover" style="height:200px">
+              <img ng-src="{{fight.photo}}" />
+            </div>
+            <div class="content">
+              <div class="main">
+                <h3 class="name"></h3>
+                <p class="text-center">Categoria de combate: {{fight.eventCombat}}</p>
+                <p class="profession">Evento: {{fight.eventComp}}</p>
+              </div>
+              <div class="footer">
+                <button class="btn btn-simple" onclick="rotateCard(this)">
+                          <i class="fa fa-mail-forward"></i>Competidores</button>
+              </div>
+            </div>
+          </div>
+          <!-- end front panel -->
+          <div class="back">
+            <div class="">
+            </div>
+            <div class="content">
+              <div class="main">
+                <h4 class="text-center">Competidores</h4>
+                <p class="text-center">{{fight.fighter1}}</p>
+                <p class="text-center">{{fight.fighter2}}</p>
+                <p class="text-center">{{fight.fighter3}}</p>
+                <p class="text-center">{{fight.fighter4}}</p>
+                <p class="text-center">{{fight.fighter5}}</p>
+              </div>
+            </div>
+            <br>
+            <div class="footer">
+              <button class="btn btn-simple" onclick="rotateCard(this)">
+                        <i class="fa fa-reply"></i> Back
+                </button>
+            </div>
+          </div>
+          <!-- end back panel -->
+        </div>
+        <!-- end card -->
+      </div>
+      <!-- end card-container -->
+    </div>
+  </div>
+</main>
+<br>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>
+<script type="text/javascript">
+  $().ready(function() {
+    $('[rel="tooltip"]').tooltip();
+
+  });
+
+  function rotateCard(btn) {
+    var $card = $(btn).closest('.card-container');
+    console.log($card);
+    if ($card.hasClass('hover')) {
+      $card.removeClass('hover');
+    } else {
+      $card.addClass('hover');
+    }
+  }
+</script>
+
+<script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-46172202-4', 'auto');
+  ga('send', 'pageview');
+</script>

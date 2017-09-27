@@ -1,0 +1,36 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "app",
+  "main": "./api/server.js",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.5",
+    "morgan": "~1.5.0",
+    "nib": "^1.1.2",
+    "nodemailer": "^4.0.1",
+    "passport": "^0.3.2",
+    "passport-jwt": "^1.2.1",
+    "smdatetimerangepicker": "^2.0.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlueDevs/Aplicacion.git"
+  },
+  "author": "loa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlueDevs/Aplicacion/issues"
+  },
+  "homepage": "https://github.com/BlueDevs/Aplicacion#readme"
+}

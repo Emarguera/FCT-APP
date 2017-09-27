@@ -1,0 +1,56 @@
+  <!-- Navigation -->
+  <div id="navigation">
+    <nav class="navbar navbar-custom" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="site-logo">
+              <a href="index.html" class="brand">FCT</a>
+            </div>
+          </div>
+
+
+          <div class="col-md-10">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <i class="fa fa-bars"></i>
+              </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menu">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#!/regStudent-Professor">Registro de alumnos</a></li>
+                <li><a href="#!/inscription-Professor">Inscribir Competidores</a></li>
+                 <li><a href="#!/galleryProfessor"><span class="nav-text">Galería</span></a></li>
+                <li class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-text">Listados</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="#!/consultEvent-Professor"><span class="nav-text">Listado de Eventos</span></a></li>
+                <li><a href="#!/academysList-Professor"><span class="nav-text">Listado de Academias</span></a></li>
+                <li><a href="#!/ranking-Professor"><span class="nav-text">Listado de Ranking</span></a></li>
+                <li><a href="#!/studentList-Professor"><span class="nav-text">Listado de Alumnos</span></a></li>
+                </ul>
+              </li>
+              <li><a href="#!/reserve-Professor">Reserva de Entradas</a></li>
+
+               <li ng-controller="UserController as vm" class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-text">Configuración</span> <i class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#!/professor">Perfil</a></li>
+                <li><a href="" ng-click="vm.LogOut()"><span class="nav-text">Cerrar Sesión </span><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+
+            <!-- /.Navbar-collapse -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </nav>
+  </div>
+  <!-- /Navigation -->

@@ -1,0 +1,246 @@
+<div ng-include="'include/navAdmin.html'"></div>
+<section id="about" class="home-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center">
+            <h2 class="h-bold">Bitácora</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-nav-tabs">
+    <div class="header header-success">
+      <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="active">
+              <a href="#!/logbook" data-toggle="tab">
+													USUARIOS
+												</a>
+            </li>
+            <li>
+              <a href="#!/logbookAcademy" data-toggle="tab">
+													ACADEMIAS
+												</a>
+            </li>
+            <li>
+              <a href="#!/logbookEvent" data-toggle="tab">
+													EVENTOS
+												</a>
+
+            </li>
+            <li>
+              <a href="#!/logbookSponsor" data-toggle="tab">
+													PATROCINADORES
+												</a>
+
+            </li>
+            <li>
+              <a href="#!/logbookAsoc" data-toggle="tab">
+													ASOCIACIONES
+												</a>
+
+            </li>
+            <li>
+              <a href="#!/logbookPlace" data-toggle="tab">
+													LUGARES
+												</a>
+
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="tab-content text-center">
+        <div class="tab-pane active" id="user" ng-controller="ProfesorController as ctrl">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content table-responsive">
+                <table class="table">
+                  <!-- <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></span> -->
+                  <thead class="text-primary">
+                    <tr>
+                      <th>FECHA</th>
+                      <th>ACCIÓN</th>
+                      <th>IDENTIFICACIÓN</th>
+                      <th>NOMBRE COMPLETO</th>
+                    </tr>
+                  </thead>
+                  <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></i></span>
+                  <tbody>
+                    <tr ng-repeat="userProfesor in ctrl.profesors | filter:ctrl.nameFilter | orderBy:'regDate':true">
+                      <td>{{userProfesor.regDate | date: "short"}}</td>
+                      <td>{{userProfesor.accion}}</td>
+                      <td>{{userProfesor.identification}}</td>
+                      <td>{{userProfesor.firstName +' '+ userProfesor.secondName +' '+ userProfesor.lastName +' '+ userProfesor.secondlastName}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="tab-pane" id="academys" ng-controller="AcademyController as academyctrl">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <tr>
+                      <th>FECHA</th>
+                      <th>ACCIÓN</th>
+                      <th>NOMBRE DE LA ACADEMIA</th>
+                      <th>NOMBRE DEL ENCARGADO</th>
+                    </tr>
+                  </thead>
+                  <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></i></span>
+                  <tbody>
+                    <tr ng-repeat="academy in academyctrl.Academys">
+                      <td>{{academy.regDate | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{academy.accion}}</td>
+                      <td>{{academy.name}}</td>
+                      <td>{{academy.contact}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="events" ng-controller="eventController as eventCtrl">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>FECHA</th>
+                    <th>ACCIÓN</th>
+                    <th>NOMBRE</th>
+                    <th>DESCRIPCIÓN</th>
+                  </thead>
+                  <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></i></span>
+                  <tbody>
+                    <tr ng-repeat="event in eventCtrl.eventsList">
+                      <td>{{event.regDate | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{event.accion}}</td>
+                      <td>{{event.eventName}}</td>
+                      <td>{{event.eventDescription}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="sponsor" ng-controller="sponsorController as sponsorctrl">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>FECHA</th>
+                    <th>ACCIÓN</th>
+                    <th>NOMBRE COMERCIAL</th>
+                    <th>NOMBRE JURÍDICO</th>
+                    <th>LOGO EMPRESARIAL</th>
+                  </thead>
+                  <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></i></span>
+                  <tbody>
+                    <tr ng-repeat="sponsorList in sponsorctrl.sponsorInfo | filter:ctrl.nameFilter">
+                      <td>{{sponsorList.regDate | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{sponsorList.accion}}</td>
+                      <td>{{sponsorList.commercialName}}</td>
+                      <td>{{sponsorList.realName}}</td>
+                      <td><img ng-src="{{sponsorList.photo}}" height="50px" width="50px" alt=""></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="association" ng-controller="AssociationController as ctrl">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>FECHA</th>
+                    <th>ACCIÓN</th>
+                    <th>NOMBRE DE LA ASOCIACIÓN</th>
+                    <th>DESCRIPCIÓN</th>
+                  </thead>
+                  <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></i></span>
+                  <tbody>
+                    <tr ng-repeat="association in ctrl.associated | filter:ctrl.nameFilter">
+                      <td>{{association.regDate | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{association.accion}}</td>
+                      <td>{{association.firstName}}</td>
+                      <td>{{association.descriptionAsso}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="places" ng-controller="PlacesController as placesctrl">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>FECHA</th>
+                    <th>ACCIÓN</th>
+                    <th>NOMBRE DEL LUGAR</th>
+                    <th>UBICACIÓN</th>
+                    <th>NOMBRE DEL ENCARGADO</th>
+                  </thead>
+                  <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></i></span>
+                  <tbody>
+                    <tr ng-repeat="place in placesctrl.places | filter:ctrl.nameFilter">
+                      <td>{{place.regDate | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{place.accion}}</td>
+                      <td>{{place.name}}</td>
+                      <td>{{place.ubication}}</td>
+                      <td>{{place.contact}} {{place.lastName}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+          <!-- <li><a href="#">Press release</a></li> -->
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>
+<script src="./js/logbook.js"></script>

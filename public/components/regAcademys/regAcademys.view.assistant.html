@@ -1,0 +1,149 @@
+<div id="nav" ng-include="'./include/navAssistant.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Registrar academia</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section>
+    <div ng-controller="AcademyController as academyctrl" class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="green" id="wizard">
+              <form name="frmRegAcademia" action="" method="">
+                <div class="wizard-navigation">
+                  <ul>
+                    <li><a href="#step1" data-toggle="tab">Paso 1</a></li>
+                    <li><a href="#step2" data-toggle="tab">Paso 2</a></li>
+                  </ul>
+                </div>
+
+                <div class="tab-content">
+                  <div class="tab-pane" id="step1">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Nombre academia*</label>
+                          <input type="text" class="form-control" name="name" id="Name" ng-model="academyctrl.name" required>
+                          <div ng-messages="frmRegAcademia.name.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.name.$dirty || (frmRegAcademia.name.$invalid && frmRegAcademia.name.$touched)">
+                            <div ng-hide="frmRegAcademia.name.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Direción*</label>
+                          <input type="text" name="address" class="form-control" ng-model="academyctrl.address" required>
+                          <div ng-messages="frmRegAcademia.address.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.address.$dirty || (frmRegAcademia.address.$invalid && frmRegAcademia.address.$touched)">
+                            <div ng-hide="frmRegAcademia.address.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Teléfono*</label>
+                          <input type="text" class="form-control" name="number" ng-model="academyctrl.number" ng-pattern="/^[0-9]{8}$/" required>
+                          <div ng-messages="frmRegAcademia.number.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.number.$dirty || (frmRegAcademia.number.$invalid && frmRegAcademia.number.$touched)">
+                            <div ng-hide="frmRegAcademia.number.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+
+                        <div class="form-group label-floating">
+                          <md-switch ng-model="academyctrl.status" aria-label="Switch 2" ng-true-value="'Activo'" ng-false-value="'Inactivo'" class="md-accent switch">
+                            Estado: {{ academyctrl.status }}
+                          </md-switch>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="step2">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Nombre encargado*</label>
+                          <input type="text" class="form-control" name="encargado" ng-model="academyctrl.contact" required>
+                          <div ng-messages="frmRegAcademia.encargado.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.encargado.$dirty || (frmRegAcademia.encargado.$invalid && frmRegAcademia.encargado.$touched)">
+                            <div ng-hide="frmRegAcademia.encargado.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Segundo nombre</label>
+                          <input name="" type="text" class="form-control" ng-model="academyctrl.secondName">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Primer apellido*</label>
+                          <input name="lastName" type="text" class="form-control" ng-model="academyctrl.lastName" required>
+                          <div ng-messages="frmRegAcademia.lastName.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.lastName.$dirty || (frmRegAcademia.lastName.$invalid && frmRegAcademia.lastName.$touched)">
+                            <div ng-hide="frmRegAcademia.lastName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Segundo apellido*</label>
+                          <input name="secondlastName" type="text" class="form-control" ng-model="academyctrl.secondlastName" required>
+                          <div ng-messages="frmRegAcademia.secondlastName.$error" ng-show="frmRegAcademia.$submitted || frmRegAcademia.secondlastName.$dirty || (frmRegAcademia.secondlastName.$invalid && frmRegAcademia.secondlastName.$touched)">
+                            <div ng-hide="frmRegAcademia.secondlastName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label>Logo</label>
+                        <input type="file" id="photo" ng-model="academyctrl.image">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wizard-footer">
+                  <div class="pull-right">
+                    <input type='button' class='btn btn-next btn-fill btn-skin' name='Siguiente' value='Siguiente' />
+                    <input type='button' class='btn btn-finish btn-fill btn-skin' name='Enviar' ng-click="academyctrl.preSave()" ng-disabled="frmRegAcademia.$invalid" value='Enviar' />
+                  </div>
+                  <div class="pull-left">
+                    <input type='button' class='btn btn-previous btn-fill btn-skin' name='Anterior' value='Anterior' />
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- wizard container -->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!--  big container -->
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+          <!-- <li><a href="#">Press release</a></li> -->
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>

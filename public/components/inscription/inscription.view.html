@@ -1,0 +1,106 @@
+<div id="nav" ng-include="'./include/navAdmin.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Inscripción de Competidores</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section ng-controller="inscriptionController as ctrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="green" id="wizard">
+              <form name="frmInscription" autocomplete="off" novalidate>
+                <div class="wizard-navigation">
+                  <ul>
+                    <li><a href="#step1" data-toggle="tab">Inscripción</a></li>
+                  </ul>
+                 </div>
+                  <div class="tab-content">
+                    <div class="tab-pane" id="step1">
+                      <div class="row">
+                        <div class="col-md-10 col-md-offset-2">
+                        <md-input-container class="form-group col-xs-6 col-md-5">
+                         <label class="floating-label-form-group control">Eventos</label>
+                          <md-select ng-model="ctrl.eventComp" name="eventName" placeholder="Eventos" required>
+                          <md-option disabled selected= "">--Seleccione una opción--</md-option>
+                          <md-option ng-repeat="eventComp in ctrl.event" value="{{eventComp.eventName}}">{{eventComp.eventName}}</md-option>
+                         </md-select>
+                      </md-input-container>
+                       <md-input-container class="form-group col-xs-6 col-md-5">
+                         <label class="floating-label-form-group control">Combates</label>
+                          <md-select ng-repeat="eventComp in ctrl.event | filter:{eventComp:combats} | filter:{eventName:ctrl.eventComp}" ng-model="ctrl.combat" placeholder="Combates" required>
+                          <md-option disabled selected= "">--Seleccione una opción--</md-option>
+                          <md-option ng-repeat="combat in eventComp.combats" value="{{eventComp.eventName}}">Por peso: {{combat.combatWeight}} / Por edad: {{combat.combatAge}} / Por género: {{combat.combatGender}}</md-option>
+                         </md-select>
+                      </md-input-container>
+                      <md-input-container class="form-group col-xs-12 col-md-10">
+                           <label class="floating-label-form-group control">Nombre del competidor</label>
+                           <md-select ng-model="ctrl.competitors" placeholder="Competidores" required>
+                           <md-option>--Seleccione una opción--</md-option>
+                           <md-option ng-repeat="competitors in ctrl.student | filter: { role: 'alumno' }" value="{{competitors.firstName}} {{competitors.secondName}} {{competitors.lastName}} {{competitors.secondlastName}}">{{competitors.firstName}} {{competitors.secondName}} {{competitors.lastName}} {{competitors.secondlastName}}</md-option>
+                           </md-select>
+                        </md-input-container>
+                      </div>
+                        <!--  <table>
+                        <thead>
+                          <tr>
+                          <th>Categoría de peso</th>
+                          <th>Categoría de Edad</th>
+                          <th>Categoría de Género</th>
+                          </tr>
+                        </thead>
+                        <tbody ng-repeat="eventComp in ctrl.event | filter:{eventComp:combats} | filter:{eventName:ctrl.eventComp}">
+                          <tr ng-repeat="combat in eventComp.combats">
+                            <td>{{combat.combatWeight}}</td>
+                            <td>{{combat.combatAge}}</td>
+                            <td>{{combat.combatGender}}</td>
+                          </tr>
+                        </tbody>
+                      </table> -->
+                      </div>
+                    </div>
+                  </div>
+          
+                 <div class="col-xs-4 col-md-10 col-md-offset-2">
+                   <input type="submit" value="Inscribir" id="button1" ng-click="ctrl.save()" ng-disabled="frmInscription.$invalid"  class='btn btn-finish btn-fill btn-skin' >
+                 </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>

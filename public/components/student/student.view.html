@@ -1,0 +1,35 @@
+<div ng-include="'include/navStudent.html'"></div>
+<main>
+  <section>
+    <div ng-controller="UserController as vm" id="header">
+    <md-card>
+      <div class="col-md-12">
+
+        <md-card-header>
+        <md-card-header-text>
+          <span style="font-size:20px; " class="md-title"><b>{{vm.user.firstName}} {{vm.user.secondName}} {{vm.user.lastName}} {{vm.user.secondlastName}}</b></span>
+          <br>
+          <span style="font-size:18px; " class="md-title">{{vm.user.role}}</span>
+        </md-card-header-text>
+        </md-card-header>
+        <md-card-title class="col-md-10">
+          <md-card-title-text >
+          <span class="md-subhead"><b>Correo:</b> {{vm.user.email}}</span>
+            <span class="md-subhead"><b>Edad:</b> {{vm.user.age}}</span>
+            <span class="md-subhead"><b>Residencia:</b> {{vm.user.direction}}</span>
+            <span class="md-subhead"><b>Teléfono:</b> {{vm.user.phone}}</span>
+            <span class="md-subhead"><b>Nacimiento:</b> {{vm.user.birthday | date}}</span>
+            <span class="md-subhead"><b>Estado:</b> {{vm.user.status}}</span>
+          </md-card-title-text>
+        </md-card-title>
+          <md-card-title-media class="col-md-2">
+            <div class="md-media-lg card-media">
+              <img ng-src="{{vm.user.photo}}" alt="Description">
+            </div>
+          </md-card-title-media>
+          <!-- <a href="" class="btn btn-skin edit btnCircle">Editar</a> -->
+      </div>
+      </md-card>
+  </section>
+
+</main>

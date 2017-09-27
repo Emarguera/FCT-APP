@@ -1,0 +1,71 @@
+<div id="nav" ng-include="'./include/navAdmin.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Lista de usuarios</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section id="Reg-Profesor" ng-controller="ProfesorController as ctrl">
+    
+    <div class="col-md-12" style="float: none">
+      <div class="card">
+        <div class="card-header" data-background-color="green">
+          <div class="row">
+            <div class="col-md-6 col-xs-3"><h4 class="titleList">Lista de usuarios</h4></div>
+            <div class="col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-2">
+              <span class="fa fa-search"><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar Usuarios"></span>
+           </div>
+          </div>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table">
+             <thead>
+                <tr>
+                  <th>IDENTIFICACIÓN</th>
+                  <th>NOMBRE COMPLETO</th>
+                  <th>EDAD</th>
+                  <th>ROL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="userProfesor in ctrl.profesors | filter:ctrl.nameFilter">
+                  <td>{{userProfesor.identification}}</td>
+                  <td>{{userProfesor.firstName +' '+ userProfesor.secondName +' '+ userProfesor.lastName +' '+ userProfesor.secondlastName}}</td>
+                  <td>{{userProfesor.age}}</td>
+                  <td>{{userProfesor.role}}</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+    </div>
+  </section>
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>

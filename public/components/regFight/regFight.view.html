@@ -1,0 +1,134 @@
+<div id="nav" ng-include="'./include/navAdmin.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Registro de combates</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section id="Reg-Student" ng-controller="fightController as ctrl" data-spy="scroll" data-target=".navbar-custom">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="green" id="wizard">
+              <form name="frmRegStudent" autocomplete="off" novalidate>
+                <div class="wizard-navigation">
+                  <ul>
+                    <li><a href="#step1" data-toggle="tab">EVENTO</a></li>
+                    <li><a href="#step2" data-toggle="tab">LUCHADOR</a></li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane" id="step1">
+                    <div class="row">
+                      <div class="col-md-10 col-md-offset-4" id="vertical-center">
+                        <md-input-container class="form-group col-xs-6 col-md-5">
+                         <label class="floating-label-form-group control">Eventos</label>
+                          <md-select ng-model="ctrl.eventComp" name="eventName" placeholder="Eventos" required>
+                          <md-option selected= "">--Seleccione una opción--</md-option>
+                          <md-option ng-repeat="eventComp in ctrl.eventsList" value="{{eventComp.eventName}}">{{eventComp.eventName}}</md-option>
+                         </md-select>
+                      </md-input-container>
+                      </div>
+                      <div class="col-md-10 col-md-offset-4" id="vertical-center">
+                        <div class="form-group label-floating">
+                          <md-input-container class="form-group col-xs-6 col-md-5">
+                         <label class="floating-label-form-group control">Combates</label>
+                          <md-select ng-repeat="eventComp in ctrl.eventsList | filter:{eventComp:combats} | filter:{eventName:ctrl.eventComp}" ng-model="ctrl.combat" placeholder="Combates" required>
+                          <md-option disabled selected= "">--Seleccione una opción--</md-option>
+                          <md-option ng-repeat="combat in eventComp.combats" value="Por peso: {{combat.combatWeight}} / Por edad: {{combat.combatAge}} / Por género: {{combat.combatGender}}">Por peso: {{combat.combatWeight}} / Por edad: {{combat.combatAge}} / Por género: {{combat.combatGender}}</md-option>
+                         </md-select>
+                      </md-input-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="step2" disabled>
+                    <div class="row">
+                      <div class="col-md-10 col-md-offset-1">
+                        <md-input-container class="form-group col-xs-12 col-md-4 floating-label-form-group control">
+                          <md-select ng-model="ctrl.fighter1" placeholder="Competidor 1" required>
+                            <md-option value="">--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="fighter1 in ctrl.inscriptions" value="{{fighter1.competitors}}">{{fighter1.competitors}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                        <md-input-container class="form-group col-xs-12 col-md-4 floating-label-form-group control">
+                          <md-select ng-model="ctrl.fighter2" placeholder="Competidor 2" required>
+                            <md-option value="">--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="fighter2 in ctrl.inscriptions" value="{{fighter2.competitors}}">{{fighter2.competitors}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                        <md-input-container class="form-group col-xs-12 col-md-4 floating-label-form-group control">
+                          <md-select ng-model="ctrl.fighter3" placeholder="Competidor 3">
+                            <md-option value="">--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="fighter3 in ctrl.inscriptions" value="{{fighter3.competitors}}">{{fighter3.competitors}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                        <md-input-container class="form-group col-xs-12 col-md-4 floating-label-form-group control">
+                          <md-select ng-model="ctrl.fighter4" placeholder="Competidor 4">
+                            <md-option value="">--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="fighter4 in ctrl.inscriptions" value="{{fighter4.competitors}}">{{fighter4.competitors}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                        <md-input-container class="form-group col-xs-12 col-md-4 floating-label-form-group control">
+                          <md-select ng-model="ctrl.fighter5" placeholder="Competidor 5">
+                            <md-option value="">--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="fighter5 in ctrl.inscriptions" value="{{fighter5.competitors}}">{{fighter5.competitors}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                        <md-input-container class="form-group col-xs-12 col-md-4 floating-label-form-group control">
+                          <md-select ng-model="ctrl.winner" placeholder="Ganador">
+                            <md-option ng-repeat="winner in ctrl.users | filter: { role: 'alumno' }" value="{{winner.firstName +' '+ winner.lastName +' '+ winner.secondlastName}}">{{winner.firstName +' '+ winner.lastName +' '+ winner.secondlastName}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="wizard-footer">
+                    <div class="pull-right">
+                      <input type='button' name='Siguiente' value='Siguiente' class='btn btn-next btn-fill btn-skin' />
+                    </div>
+                    <div class="pull-right">
+                      <input type='submit' class='btn btn-finish btn-fill btn-skin' name='Registrar' value='Registrar' ng-click="ctrl.save()" ng-disabled="frmRegStudent.$invalid" />
+                    </div>
+                    <div class="pull-left">
+                      <input type='button' class='btn btn-previous btn-fill btn-skin' name='Anterior' value='Anterior' />
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="./js/form2.js"></script>

@@ -1,0 +1,182 @@
+<div id="nav" ng-include="'./include/navAdmin.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Registrar Profesor</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section ng-controller="ProfesorController as ctrl" data-spy="scroll" data-target=".navbar-custom">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="green" id="wizard">
+              <form name="frmRegProfessor" autocomplete="off" novalidate>
+                <div class="wizard-navigation">
+                  <ul>
+                    <li><a href="#step1" data-toggle="tab">Paso 1</a></li>
+                    <li><a href="#step2" data-toggle="tab">Paso 2</a></li>
+                    <li><a href="#step3" data-toggle="tab">Paso 3</a></li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane" id="step1">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Primer Nombre</label>
+                          <input type="text" name="firstName" class="form-control" ng-model="ctrl.firstName" required pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                          <div ng-messages="frmRegProfessor.firstName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.firstName.$dirty || (frmRegProfessor.firstName.$invalid && frmRegProfessor.firstName.$touched)">
+                            <div ng-hide="frmRegProfessor.firstName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+
+                        <div class="form-group label-floating">
+                          <label class="control-label">Segundo Nombre</label>
+                          <input type="text" name="secondName" class="form-control" ng-model="ctrl.secondName" pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                          <div ng-messages="frmRegProfessor.secondName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.secondName.$dirty || (frmRegProfessor.secondName.$invalid && frmRegProfessor.secondName.$touched)">
+                            <div ng-hide="frmRegProfessor.secondName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Primer Apellido</label>
+                          <input type="text" name="lastName" ng-model="ctrl.lastName" class="form-control" required pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                          <div ng-messages="frmRegProfessor.lastName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.lastName.$dirty || (frmRegProfessor.lastName.$invalid && frmRegProfessor.lastName.$touched)">
+                            <div ng-hide="frmRegProfessor.lastName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Segundo Apellido</label>
+                          <input type="text" name="secondlastName" ng-model="ctrl.secondlastName" class="form-control" pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}" required>
+                          <div ng-messages="frmRegProfessor.secondlastName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.secondlastName.$dirty || (frmRegProfessor.secondlastName.$invalid && frmRegProfessor.secondlastName.$touched)">
+                            <div ng-hide="frmRegProfessor.secondlastName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="step2">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Identificación (sin guiones)</label>
+                          <input type="text" name="identification" ng-model="ctrl.identification" class="form-control" required ng-minlength="7">
+                          <div ng-messages="frmRegProfessor.identification.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.identification.$dirty || (frmRegProfessor.identification.$invalid && frmRegProfessor.identification.$touched)">
+                            <div ng-hide="frmRegProfessor.identification.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Correo Electrónico</label>
+                          <input type="text" name="email" ng-model="ctrl.email" class="form-control" required pattern="[a-z0-9._%+-]+@+[a-z0-9.-]+\.[a-z]{2,4}">
+                          <div ng-messages="frmRegProfessor.email.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.email.$dirty || (frmRegProfessor.email.$invalid && frmRegProfessor.email.$touched)">
+                            <div ng-hide="frmRegProfessor.email.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Teléfono (sin guiones)</label>
+                          <input type="text" name="phone" ng-model="ctrl.phone" class="form-control" required pattern="[0-9]{8}" ng-minlength="8" ng-maxlength="8">
+                          <div ng-messages="frmRegProfessor.phone.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.phone.$dirty || (frmRegProfessor.phone.$invalid && frmRegProfessor.phone.$touched)">
+                            <div ng-hide="frmRegProfessor.phone.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Dirección</label>
+                          <input type="text" name="direction" class="form-control" ng-model="ctrl.direction" required>
+                          <div ng-messages="frmRegProfessor.direction.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.direction.$dirty || (frmRegProfessor.direction.$invalid && frmRegProfessor.direction.$touched)">
+                            <div ng-hide="frmRegProfessor.direction.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="step3" disabled>
+                    <div class="row">
+                      <div class="col-sm-4 col-sm-offset-2">
+                        <md-input-container>
+                          <label>Género</label>
+                          <md-select name="gender" ng-model="ctrl.gender" class="selectStyle" required>
+                            <md-option value="Masculino">Masculino</md-option>
+                            <md-option value="Femenino">Femenino</md-option>
+                            <md-option value="Indefinido">Indefinido</md-option>
+                          </md-select>
+                        </md-input-container>
+                      </div>
+                      <div class="col-sm-4">
+                        <md-input-container>
+                          <label>Academia</label>
+                          <md-select name="academy" id="AcademyList" class="selectStyle" ng-model="ctrl.academy">
+                            <md-option value="">--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="academys in ctrl.academys" value="{{academys.name}}">{{academys.name}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                      </div>
+                      <div class="col-sm-3 col-sm-offset-2">
+                        <md-input-container>
+                          <label>Fecha de nacimiento</label>
+                          <md-datepicker min-Mode="month" datepicker-Mode="month" type="date" ng-model="ctrl.birthday" class="selectStyle" required md-no-asterisk="true" md-open-on-focus></md-datepicker>
+                        </md-input-container>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group label-floating" ng-cloak>
+                          <md-switch ng-model="ctrl.status" aria-label="Switch 2" ng-true-value="'Activo'" ng-false-value="'Inactivo'">
+                            Estado: {{ ctrl.status }}
+                          </md-switch>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="wizard-footer">
+                  <div class="pull-right">
+                    <input type='button' name='Siguiente' value='Siguiente' class='btn btn-next btn-fill btn-skin' />
+                  </div>
+                  <div class="pull-right">
+                    <input type='submit' class='btn btn-finish btn-fill btn-skin' name='Registrar' value='Registrar' ng-click="ctrl.save()" ng-disabled="frmRegProfessor.$invalid" />
+                  </div>
+                  <div class="pull-left">
+                    <input type='button' class='btn btn-previous btn-fill btn-skin' name='Anterior' value='Anterior' />
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="./js/form2.js"></script>

@@ -1,0 +1,236 @@
+<div id="nav" ng-include="'./include/navAssistant.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Lista de Profesores</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section>
+    <div class="col-md-12" style="float: none">
+      <div class="card">
+        <div class="card-header" data-background-color="green">
+          <div class="row">
+            <div class="col-md-6 col-xs-3">
+              <h4 class="titleList">Profesores</h4></div>
+            <div class="col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-2">
+              <span class="fa fa-search"><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar Profesor"></span>
+            </div>
+          </div>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+              <tr>
+                <th>NOMBRE COMPLETO</th>
+                <th>IDENTIFICACIÓN</th>
+                <th>NACIMIENTO</th>
+                <th>EDAD</th>
+                <th>TELÉFONO</th>
+                <th>CORREO ELECTRÓNICO</th>
+                <th>DOMICILIO</th>
+                <th>ACADEMIA</th>
+                <th>ESTADO</th>
+                <th>GÉNERO</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="userProfesor in ctrl.profesors | filter: { role: 'profesor' } | filter:ctrl.nameFilter">
+                <td>{{userProfesor.firstName +' '+ userProfesor.secondName +' '+ userProfesor.lastName +' '+ userProfesor.secondlastName}}</td>
+                <td>{{userProfesor.identification}}</td>
+                <td>{{userProfesor.birthday | date}}</td>
+                <td>{{userProfesor.age}}</td>
+                <td>{{userProfesor.phone}}</td>
+                <td>{{userProfesor.email}}</td>
+                <td>{{userProfesor.direction}}</td>
+                <td>{{userProfesor.academy}}</td>
+                <td>{{userProfesor.status}}</td>
+                <td>{{userProfesor.gender}}</td>
+                <td><input type="button" value="Modificar" class="btnEdit" ng-click="ctrl.getInfo(userProfesor)"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </section>
+  <section>
+    <div class="modal fade" id="modalProfessors" role="dialog" style="margin-top:100px">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4>Actualización de Datos de Usuario</h4>
+          </div>
+          <div class="modal-body" id="">
+            <form name="frmRegProfessor" autocomplete="off" novalidate>
+              <div class="row setup-content" id="step-1" ng-show="ctrl.activeStep(1)">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Primer Nombre:</label>
+                    <input type="text" name="firstName" class="form-control" ng-model="ctrl.firstName" required pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                    <div ng-messages="frmRegProfessor.firstName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.firstName.$dirty || (frmRegProfessor.firstName.$invalid && frmRegProfessor.firstName.$touched)">
+                      <div ng-hide="frmRegProfessor.firstName.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Segundo Nombre:</label>
+                    <input type="text" name="secondName" class="form-control" ng-model="ctrl.secondName" pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                    <div ng-messages="frmRegProfessor.secondName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.secondName.$dirty || (frmRegProfessor.secondName.$invalid && frmRegProfessor.secondName.$touched)">
+                      <div ng-hide="frmRegProfessor.secondName.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Primer Apellido:</label>
+                    <input type="text" name="lastName" ng-model="ctrl.lastName" class="form-control" required pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                    <div ng-messages="frmRegProfessor.lastName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.lastName.$dirty || (frmRegProfessor.lastName.$invalid && frmRegProfessor.lastName.$touched)">
+                      <div ng-hide="frmRegProfessor.lastName.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Segundo Apellido:</label>
+                    <input type="text" name="secondlastName" ng-model="ctrl.secondlastName" class="form-control" pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}" required>
+                    <div ng-messages="frmRegProfessor.secondlastName.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.secondlastName.$dirty || (frmRegProfessor.secondlastName.$invalid && frmRegProfessor.secondlastName.$touched)">
+                      <div ng-hide="frmRegProfessor.secondlastName.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Identificación:</label>
+                    <input type="text" name="identification" ng-model="ctrl.identification" class="form-control" required ng-minlength="9">
+                    <div ng-messages="frmRegProfessor.identification.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.identification.$dirty || (frmRegProfessor.identification.$invalid && frmRegProfessor.identification.$touched)">
+                      <div ng-hide="frmRegProfessor.identification.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Correo Electrónico:</label>
+                    <input type="text" name="email" ng-model="ctrl.email" class="form-control" required pattern="[a-z0-9._%+-]+@+[a-z0-9.-]+\.[a-z]{2,4}">
+                    <div ng-messages="frmRegProfessor.email.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.email.$dirty || (frmRegProfessor.email.$invalid && frmRegProfessor.email.$touched)">
+                      <div ng-hide="frmRegProfessor.email.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-offset-8">
+                    <button class="btn btn-next btn-fill btn-skin" type="button" ng-click="ctrl.setStep(2)">Siguiente <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row setup-content" id="step-2" ng-show="ctrl.activeStep(2)">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Teléfono:</label>
+                    <input type="text" name="phone" ng-model="ctrl.phone" class="form-control" required pattern="[0-9]{8}" ng-minlength="8" ng-maxlength="8">
+                    <div ng-messages="frmRegProfessor.phone.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.phone.$dirty || (frmRegProfessor.phone.$invalid && frmRegProfessor.phone.$touched)">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Dirección:</label>
+                    <input type="text" name="direction" class="form-control" ng-model="ctrl.direction" required>
+                    <div ng-messages="frmRegProfessor.direction.$error" ng-show="frmRegProfessor.$submitted || frmRegProfessor.direction.$dirty || (frmRegProfessor.direction.$invalid && frmRegProfessor.direction.$touched)">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Academia:</label>
+                    <select name="academy" id="AcademyList" class="form-control" ng-model="ctrl.academy">
+                          <option value="">--Seleccione una opción--</option>
+                          <option ng-repeat="academys in ctrl.academys" value="{{academys.name}}">{{academys.name}}</option>
+                        </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Género:</label>
+                    <select name="gender" ng-model="ctrl.gender" class="form-control" required>
+                          <option value="">--Seleccione una opción--</option>
+                          <option value="masculino">Masculino</option>
+                          <option value="femenino">Femenino</option>
+                          <option value="indefinido">Indefinido</option>
+                        </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Fecha de nacimiento:</label>
+                    <input type="date" ng-model="ctrl.birthday" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Edad:</label>
+                    <input type="text" ng-model="ctrl.age" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group " ng-cloak>
+                    <md-switch ng-model="ctrl.status" aria-label="Switch 2" ng-true-value="'Activo'" ng-false-value="'Inactivo'">
+                      Estado: {{ ctrl.status }}
+                    </md-switch>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="col-sm-6">
+                    <button class="btn btn-previous btn-fill btn-skin" type="button" ng-click="ctrl.setStep(1)"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Atrás</button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default" data-dismiss="modal" role="button">Cerrar</button>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default" value="Actualizar" ng-click="ctrl.update(Profesor)">Actualizar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="./js/form2.js"></script>

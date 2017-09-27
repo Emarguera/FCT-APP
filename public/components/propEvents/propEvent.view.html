@@ -1,0 +1,156 @@
+<div id="nav" ng-include="'./include/navAdmin.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Propuestas de Eventos</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section ng-controller="eventPropController as eventPropCtrl" data-spy="scroll" data-target=".navbar-custom">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="green" id="wizard">
+              <form name="frmRegEventProp" autocomplete="off" novalidate>
+                <div class="wizard-navigation">
+                  <ul>
+                    <li><a href="#step1" data-toggle="tab">Información General</a></li>
+                    <li><a href="#step2" data-toggle="tab">Contacto</a></li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane" id="step1">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Nombre Evento</label>
+                          <input type="text" name="eventPropName" class="form-control" ng-model="eventPropCtrl.eventPropName" required>
+                          <div ng-messages="frmRegEventProp.eventPropName.$error" ng-show="frmRegEventProp.$submitted || frmRegEventProp.eventPropName.$dirty || (frmRegEventProp.eventPropName.$invalid && frmRegEventProp.eventPropName.$touched)">
+                            <div ng-hide="frmRegEventProp.eventPropName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+
+                        <div class="form-group label-floating">
+                          <label class="control-label">Capacidad Asistentes</label>
+                          <input type="text" name="eventPropCapacity" class="form-control" ng-model="eventPropCtrl.eventPropCapacity" required pattern="[0-9]{1,}">
+                          <div ng-messages="frmRegEventProp.eventPropCapacity.$error" ng-show="frmRegEventProp.$submitted || frmRegEventProp.eventPropCapacity.$dirty || (frmRegEventProp.eventPropCapacity.$invalid && frmRegEventProp.eventPropCapacity.$touched)">
+                            <div ng-hide="frmRegEventProp.eventPropCapacity.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+
+                        <div class='form-group label-floating'>
+                          <sm-range-picker-input class="form-control" fname="rangoFechas" label="Fechas del Evento" form="test" min-date="08-26-2017" ng-model="eventPropCtrl.eventPropDates" flex="50" is-required="{{true}}" format="MM-DD-YYYY" divider=":" mode="date-time" week-start-day="Domingo"
+                            required>
+                          </sm-range-picker-input>
+                        </div>
+
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Locación</label>
+                          <select class="form-control" ng-model="eventPropCtrl.eventPropLocationName" placeholder="Locación" md-no-asterisk="true" required>
+                            <option disabled="" selected=""></option>
+                            <option ng-repeat="Places in eventPropCtrl.places" value="{{Places.name}}">{{Places.name}}</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group label-floating">
+                          <label class="control-label">Costo Entrada (¢)</label>
+                          <input type="text" name="eventPropInscriptionCost" ng-model="eventPropCtrl.eventPropInscriptionCost" class="form-control" pattern="[0-9]{1,}" required>
+                          <div ng-messages="frmRegEventProp.eventPropInscriptionCost.$error" ng-show="frmRegEventProp.$submitted || frmRegEventProp.eventPropInscriptionCost.$dirty || (frmRegEventProp.eventPropInscriptionCost.$invalid && frmRegEventProp.eventPropInscriptionCost.$touched)">
+                            <div ng-hide="frmRegEventProp.eventPropInscriptionCost.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="step2">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Compañía Organizadora</label>
+                          <input type="text" name="eventPropOrganize" ng-model="eventPropCtrl.eventPropOrganize" class="form-control" required>
+                          <div ng-messages="frmRegEventProp.eventPropOrganize.$error" ng-show="frmRegEventProp.$submitted || frmRegEventProp.eventPropOrganize.$dirty || (frmRegEventProp.eventPropOrganize.$invalid && frmRegEventProp.eventPropOrganize.$touched)">
+                            <div ng-hide="frmRegEventProp.eventPropOrganize.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Nombre Contacto</label>
+                          <input type="text" name="eventPropContactName" class="form-control" ng-model="eventPropCtrl.eventPropContactName" required>
+                          <div ng-messages="frmRegEventProp.eventPropContactName.$error" ng-show="frmRegEventProp.$submitted || frmRegEventProp.eventPropContactName.$dirty || (frmRegEventProp.eventPropContactName.$invalid && frmRegEventProp.eventPropContactName.$touched)">
+                            <div ng-hide="frmRegEventProp.eventPropContactName.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Teléfono</label>
+                          <input type="text" name="eventPropContactNumber" ng-model="eventPropCtrl.eventPropContactNumber" class="form-control" required pattern="[0-9]{8}" ng-minlength="8" ng-maxlength="8">
+                          <div ng-messages="frmRegEventProp.eventPropContactNumber.$error" ng-show="frmRegEventProp.$submitted || frmRegEventProp.eventPropContactNumber.$dirty || (frmRegEventProp.eventPropContactNumber.$invalid && frmRegEventProp.eventPropContactNumber.$touched)">
+                            <div ng-hide="frmRegEventProp.eventPropContactNumber.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                        <div class="form-group label-floating">
+                          <label class="control-label">Correo Electrónico</label>
+                          <input type="text" name="eventPropContactEmail" ng-model="eventPropCtrl.eventPropContactEmail" class="form-control" required pattern="[a-z0-9._%+-]+@+[a-z0-9.-]+\.[a-z]{2,4}">
+                          <div ng-messages="frmRegEventProp.eventPropContactEmail.$error" ng-show="frmRegEventProp.$submitted || frmRegEventProp.eventPropContactEmail.$dirty || (frmRegEventProp.eventPropContactEmail.$invalid && frmRegEventProp.eventPropContactEmail.$touched)">
+                            <div ng-hide="frmRegEventProp.eventPropContactEmail.$valid" ng-include="'./include/messages.html'"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="wizard-footer">
+                  <div class="pull-right">
+                    <input type='button' name='Siguiente' value='Siguiente' class='btn btn-next btn-fill btn-skin' />
+                  </div>
+                  <div class="pull-right">
+                    <input type='submit' class='btn btn-finish btn-fill btn-skin' name='Enviar' value='Registrar' ng-click="eventPropCtrl.saveEventProp()" ng-disabled="frmRegEventProp.$invalid" />
+                  </div>
+                  <div class="pull-left">
+                    <input type='button' class='btn btn-previous btn-fill btn-skin' name='Anterior' value='Anterior' />
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>

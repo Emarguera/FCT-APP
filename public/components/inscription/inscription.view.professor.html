@@ -1,0 +1,117 @@
+<div id="nav" ng-include="'./include/navProfessor.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Inscripción de Competidores</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section ng-controller="inscriptionController as ctrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="wizard-container">
+            <div class="card wizard-card" data-color="green" id="wizard">
+              <form name="frmInscription" autocomplete="off" novalidate>
+                <div class="wizard-navigation">
+                  <ul>
+                    <li><a href="#step1" data-toggle="tab">Inscripción</a></li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane" id="step1">
+                    <div class="row">
+                      <div class="col-md-10 col-md-offset-2">
+                        <md-input-container class="form-group col-xs-12 col-md-10">
+                          <label class="floating-label-form-group control">Nombre del competidor</label>
+                          <md-select ng-model="ctrl.competitors" placeholder="Competidores" required>
+                            <md-option>--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="competitors in ctrl.student | filter: { role: 'alumno' }" value="{{competitors.firstName}} {{competitors.secondName}} {{competitors.lastName}} {{competitors.secondlastName}}">{{competitors.firstName}} {{competitors.secondName}} {{competitors.lastName}} {{competitors.secondlastName}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                      </div>
+
+                      <div class="col-md-10 col-md-offset-2">
+                        <md-input-container class="form-group col-xs-6 col-md-5">
+                          <label class="floating-label-form-group control">Categoría de peso</label>
+                          <md-select ng-model="ctrl.weightCategory" placeholder="Categoría de Peso" required>
+                            <md-option>--Seleccione una opción--</md-option>
+                            <md-option value="Peso il-Yang">Peso il-Yang (Pluma): -51kg</md-option>
+                            <md-option value="Peso i-Yang">Peso i-Yang (Gallo): 52Kg a 59kg</md-option>
+                            <md-option value="Peso o-Yang">Peso o-Yang (Supergallo): 60kg a 65kg</md-option>
+                            <md-option value="Peso sam-Yang">Peso sam-Yang (Wélter): 66kg a 74kg</md-option>
+                            <md-option value="Peso siu-Yang">Peso siu-Yang (Pesado): +74kg</md-option>
+                          </md-select>
+                        </md-input-container>
+                        <md-input-container class="form-group col-xs-6 col-md-5">
+                          <label class="floating-label-form-group control">Categoría de edad</label>
+                          <md-select ng-model="ctrl.ageCategory" placeholder="Categoría de Edad" required>
+                            <md-option>--Seleccione una opción--</md-option>
+                            <md-option value="Infantil">Infantil: de 4 a 11 años</md-option>
+                            <md-option value="Cadete">Cadete: de 12 a 16 años</md-option>
+                            <md-option value="Elite">Élite: de 17 a 23</md-option>
+                            <md-option value="Senior">Senior: 23 en adelante</md-option>
+                          </md-select>
+                        </md-input-container>
+                      </div>
+                      <div class="col-md-10 col-md-offset-2">
+                        <md-input-container class="form-group col-xs-6 col-md-5">
+                          <label class="floating-label-form-group control">Categoría de género</label>
+                          <md-select ng-model="ctrl.genderCategory" placeholder="Género" required>
+                            <md-option>--Seleccione una opción--</md-option>
+                            <md-option value="femenino">Femenino</md-option>
+                            <md-option value="masculino">Masculino</md-option>
+                          </md-select>
+                        </md-input-container>
+                        <md-input-container class="form-group col-xs-6 col-md-5 floating-label-form-group control">
+                          <label class="floating-label-form-group control">Evento</label>
+                          <md-select ng-model="ctrl.eventComp" placeholder="Eventos" required>
+                            <md-option>--Seleccione una opción--</md-option>
+                            <md-option ng-repeat="eventComp in ctrl.event" value="{{eventComp.eventName}}">{{eventComp.eventName}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xs-4 col-md-10 col-md-offset-2">
+                  <input type="submit" value="Inscribir" id="button1" ng-click="ctrl.save()" ng-disabled="frmInscription.$invalid" class='btn btn-finish btn-fill btn-skin'>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>

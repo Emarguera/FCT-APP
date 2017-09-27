@@ -1,0 +1,90 @@
+<div id="nav" ng-include="'./include/navAdmin.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Reservas</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section ng-controller="reserveController as reservectrl">
+  <form name="RegReserve" novalidate class="main" id="reserve">
+  <div class="container">
+    <section>
+      <div class="row">
+        <p class="instructions col-md-6 "><span>Instrucciones: </span>Debe elegir el evento de interés, seguido seleccione la cantidad de entradas que desea. Se puede reservar como máximo 10 boletos por transacción. Recuerde que debe ingresar al evento mostrando el código QR que el sistema generará al terminar el proceso.</p>
+
+        <div class="form-group col-xs-12 col-md-6 floating-label-form-group control">
+          <label for="">Evento:</label>
+          <input type="text" list="EventsList" class="form-control" id="inputLine" ng-model="reservectrl.event" placeholder="Evento" required>
+          <datalist id="EventsList">
+            <option value="">--Seleccione una opción--</option>
+            <option ng-repeat="event in reservectrl.listEvent" value="{{event.eventName}}">{{event.eventName}}</option>
+          </datalist>
+        </div>
+        <div class="form-group  col-xs-12 col-md-6 card">
+          <md-card class="mdCard">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">Seleccione la cantidad de Entradas</span>
+                <select id="select" ng-model="reservectrl.tickets" class="col-md-offset-5 col-md-3" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </md-card-title-text>
+              <md-card-title-media>
+                <div class="md-media-sm card-media"></div>
+              </md-card-title-media>
+            </md-card-title>
+          </md-card>
+        </div>
+        <div class="clearFix"></div>
+      </div>
+    </section>
+    <div class="col-xs-4 col-md-8"></div>
+    <div class="col-xs-4 col-md-2">
+      <input type="submit" value="Reservar" id="button1" data-toggle="modal" data-target="#myModal" class="btn btn-skin btnCircle" ng-click="reservectrl.save()">
+    </div>
+  </div>
+  <div class="clearFix"></div>
+</form>
+
+<div class="modal fade" id="myModal{{$index}}" role="dialog">
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" ng-click="reservectrl.destroy()">&times;</button>
+      <h4 class="modal-title">Reserva Exitosa!</h4>
+    </div>
+    <div class="modal-body">
+      <p id="tickets"></p>
+      <p id="event"></p>
+      <img src="img/code.png" width="300px" height="300px" class="col-md-offset-3">
+      <!--Aqui va la imagen-->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="reservectrl.destroy()" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</form>
+</section>

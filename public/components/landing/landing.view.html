@@ -1,0 +1,385 @@
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+  <section class="hero" id="intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right navicon">
+          <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
+        </div>
+      </div>
+      <div class="row title-header">
+        <div class="col-md-10 col-md-offset-1 text-center inner">
+          <div class="">
+            <h1 class="">FEDERACIÓN COSTARRICENSE DE TAE-KWON-DO</h1>
+            <hr class="" style="border-top: 2px solid #3dc9b3">
+            <p class="">Somos una organización de carácter deportivo que promueve la disciplina de Taekwondo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <a href="#about" class="learn-more-btn btn-scroll">Iniciar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Navigation -->
+  <div id="navigation">
+    <nav class="navbar navbar-custom" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="site-logo">
+              <a href="index.html" class="brand">FCT</a>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <i class="fa fa-bars"></i>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#intro">Inicio</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#junta">Junta Directiva</a></li>
+                <li class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-text">Eventos</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="#events"><i class="fa"></i><span class="nav-text">Eventos</span></a></li>
+                <li><a href="#!/propEvent-Landing"><span class="nav-text">Propuesta de Eventos</span></a></li>
+                </ul>
+              </li>
+                <li><a href="#reserve">Reservar entradas</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                 <li><a href="#!/galleryLanding">Galería</a></li>
+                <li><a href="#!/login">Iniciar Sesión</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <section id="about" class="home-section color-dark bg-white">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="animatedParent">
+            <div class="section-heading text-center animated bounceInDown">
+              <h2 class="h-bold">Nosotros</h2>
+              <div class="divider-header"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 animatedParent">
+          <div class="text-center">
+            <p>
+              Somos una organización costarricense de la Disciplina del Taekwondo y nuestro objetivo es masificar, promover y preparar a los atletas en todos sus niveles, tanto en sus conocimientos técnicos y alta competencia como en valores personales en un ambiente
+              que contribuya a aumentar su calidad de vida.
+            </p>
+            <p>
+              Federación Costarricense de Taekwondo conforme a los preceptos establecidos en sus estatutos y reglamentos, los de la Federación Mundial de Taekwondo (W.T.F) y los de la Unión Panamericana de Taekwondo (P.A.T.U), de las cuales es miembro, siendo la unica
+              y es el Único ente regulatorio del Taekwondo en Costa Rica.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="map" style="width:100%;height:300px"></div>
+
+      <script>
+        function myMap() {
+          var myCenter = new google.maps.LatLng(9.946164, -84.135357);
+          var mapCanvas = document.getElementById("map");
+          var mapOptions = {
+            center: myCenter,
+            zoom: 15
+          };
+          var map = new google.maps.Map(mapCanvas, mapOptions);
+          var marker = new google.maps.Marker({
+            position: myCenter
+          });
+          marker.setMap(map);
+
+          google.maps.event.addListener(marker, 'click', function() {
+            map.setZoom(17);
+            map.setCenter(marker.getPosition());
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeYUWIdRFDdVkqYzMTqZejnk5ZR_r-c8g&callback=myMap"></script>
+    </div>
+
+    <a href="#junta" id="buttonCircle" class="btn btn-skin btn-scroll animated fadeInUp slower">Junta directiva</a>
+  </section>
+
+  <section id="junta" class="home-section color-dark bg-gray" style="margin-bottom: 100px">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div>
+            <div class="animatedParent">
+              <div class="section-heading text-center animated bounceInDown">
+                <h2 class="h-bold">Junta Directiva</h2>
+                <div class="divider-header"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <div class="container">
+        <div class="row animatedParent">
+          <div class="col-md-4">
+            <div class="animated rotateInDownLeft">
+              <div class="service-box">
+                <div class="service-icon">
+                  <span class="fa fa-user fa-2x"></span>
+                </div>
+                <div class="service-desc">
+                  <h5>Vicepresidente</h5>
+                  <div class="divider-header"></div>
+                  <p>
+                    Ferdinando Alfaro Jiménez
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="animated rotateInDownLeft slow">
+              <div class="service-box">
+                <div class="service-icon">
+                  <span class="fa fa-user-o fa-2x"></span>
+                </div>
+                <div class="service-desc">
+                  <h5>Presidente</h5>
+                  <div class="divider-header"></div>
+                  <p>
+                    Wilmar Alvarado Castillo
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="animated rotateInDownLeft slower">
+              <div class="service-box">
+                <div class="service-icon">
+                  <span class="fa fa-user fa-2x"></span>
+                </div>
+                <div class="service-desc">
+                  <h5>Secretario</h5>
+                  <div class="divider-header"></div>
+                  <p>
+                    Kenneth Viquez Guevara
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="home-section color-dark text-center bg-white">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div>
+            <div class="animatedParent">
+              <div class="section-heading text-center animated bounceInDown">
+                <h2 class="h-bold">Próximos eventos</h2>
+                <div class="divider-header"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row animatedParent">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="row gallery-item">
+            <div class="col-md-3 animated fadeInUp">
+              <a href="img/evento1.jpg" title="Campeonato nacional atletas especiales" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/evento1.jpg">
+                <img src="img/evento1.jpg" class="img-responsive" alt="img">
+              </a>
+            </div>
+            <div class="col-md-3 animated fadeInUp slow">
+              <a href="img/evento2.jpg" title="X Taekwondo Open" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/evento2.jpg">
+                <img src="img/evento2.jpg" class="img-responsive" alt="img">
+              </a>
+            </div>
+            <div class="col-md-3 animated fadeInUp slower">
+              <a href="img/evento3.jpg" title="VI Toneo In Neh Kwan" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/evento3.jpg">
+                <img src="img/evento3.jpg" class="img-responsive" alt="img">
+              </a>
+            </div>
+            <div class="col-md-3 animated fadeInUp">
+              <a href="img/evento4.jpg" title="Campeonato nacional infantil" data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/evento4.jpg">
+                <img src="img/evento4.jpg" class="img-responsive" alt="img">
+              </a>
+            </div>
+            <br>
+          </div>
+          <a href="#!/consultEvent-landing" style="margin-top:40px" class="btn btn-skin animated fadeInUp slower">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reserve" class="home-section color-dark text-center bg-gray">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div>
+            <div class="animatedParent">
+              <div class="section-heading text-center animated bounceInDown">
+                <h2 class="h-bold">Reservas</h2>
+                <div class="divider-header"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section ng-controller="reserveController as reservectrl">
+      <form name="RegReserve" novalidate class="main">
+        <div class="container">
+          <section>
+            <div class="row">
+              <p class="instructions col-md-6 "><span>Instrucciones: </span>Debe elegir el evento de interés, seguido seleccione la cantidad de entradas que desea. Se puede reservar como máximo 10 boletos por transacción. Recuerde que debe ingresar al evento mostrando el código QR que
+                el sistema generará al terminar el proceso.</p>
+
+              <div class="form-group col-xs-12 col-md-6 floating-label-form-group control">
+                <label for="">Evento:</label>
+                <input type="text" list="EventsList" class="form-control" id="inputLine" ng-model="reservectrl.event" placeholder="Evento" required>
+                <datalist id="EventsList">
+                <option value="">--Seleccione una opción--</option>
+                <option ng-repeat="event in reservectrl.listEvent" value="{{event.eventName}}">{{event.eventName}}</option>
+              </datalist>
+              </div>
+              <div class="form-group  col-xs-12 col-md-6 card">
+                <md-card class="mdCard">
+                  <md-card-title>
+                    <md-card-title-text>
+                      <span class="md-headline">Seleccione la cantidad de Entradas</span>
+                      <select id="select" ng-model="reservectrl.tickets" class="col-md-offset-5 col-md-3" required>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                      <div class="md-media-sm card-media"></div>
+                    </md-card-title-media>
+                  </md-card-title>
+                </md-card>
+              </div>
+              <div class="clearFix"></div>
+            </div>
+          </section>
+          <div class="col-xs-4 col-md-8"></div>
+          <div class="col-xs-4 col-md-2">
+            <input type="submit" value="Reservar" id="button1" data-toggle="modal" data-target="#myModal" class="btn btn-skin btnCircle" ng-click="reservectrl.save()">
+          </div>
+        </div>
+        <div class="clearFix"></div>
+      </form>
+
+      <div class="modal fade" id="myModal{{$index}}" role="dialog">
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" ng-click="reservectrl.destroy()">&times;</button>
+              <h4 class="modal-title">Reserva Exitosa!</h4>
+            </div>
+            <div class="modal-body">
+              <p id="tickets"></p>
+              <p id="event"></p>
+              <img src="img/code.png" width="300px" height="300px" class="col-md-offset-3">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" ng-click="reservectrl.destroy()" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </form>
+    </section>
+
+    <section id="contact" class="home-section nopadd-bot color-dark bg-white text-center">
+      <div class="container marginbot-50">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="animatedParent">
+              <div class="section-heading text-center">
+                <h2 class="h-bold animated bounceInDown">Contacto</h2>
+                <div class="divider-header"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="information">
+              <p><span class="fa fa-map-marker"></span>Costa Rica, San José, Pavas, parroquia María Reina 200 metros sur, complejo bodega Morepark # 13.
+              <p> <span class="fa fa-phone"></span>(506) 2231 4308.</p>
+              <p><span class="fa fa-phone"></span>(506) 8982 9607.</p>
+              <p><span class="fa fa-envelope-o"></span>infoycomufct@gmail.com.</p>
+              <p><a href="https://www.facebook.com/TkdFCT/" target="_blank"><span class="fa fa-facebook-square"></span></a>tkdcr</p>
+              <p><a href="http://www.tkdcr.org/" target="_blank"><span class="fa fa-globe"></span>http://www.tkdcr.org</a></p>
+          </div>
+        </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="footer-menu">
+              <li><a href="#">Home</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 text-right copyright">
+            &copy;Copyright - BlueDevs All Rights Reserved
+            <div class="credits">
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <script src="js/jquery.appear.js"></script>
+    <script src="js/stellar.js"></script>
+    <script src="js/nivo-lightbox.min.js"></script>
+
+    <script src="js/custom.js"></script>
+    <script src="js/css3-animate-it.js"></script>
+    <script src="contactform/contactform.js"></script>

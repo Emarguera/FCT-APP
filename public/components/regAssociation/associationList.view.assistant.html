@@ -1,0 +1,187 @@
+<div id="nav" ng-include="'./include/navAssistant.html'"></div>
+<div class="clearfix"></div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Lista de Asociaciones Benéficas</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <section>
+    <div class="col-md-12" style="float: none">
+      <div class="card">
+        <div class="card-header" data-background-color="green">
+          <div class="row">
+            <div class="col-md-6 col-xs-3">
+              <h4 class="titleList">Asociaciones</h4></div>
+            <div class="col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-2">
+              <span class="fa fa-search"><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter"  placeholder="Buscar Asociaciones"></span>
+            </div>
+          </div>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+              <tr>
+                <th>NOMBRE COMPLETO</th>
+                <th>NOMBRE JURÍDICO DE LA EMPRESA</th>
+                <th>CORREO ELECTRÓNICO</th>
+                <th>TIPO DE ASOCIACIÓN</th>
+                <th>DESCRIPCIÓN DE LA ASOCIACIÓN</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="association in ctrl.associated | filter:ctrl.nameFilter">
+                <td>{{association.firstName +' '+ association.secondName +' '+ association.lastName +' '+ association.secondlastName}}</td>
+                <td>{{association.legal}}</td>
+                <td>{{association.email}}</td>
+                <td>{{association.associationTipe}}</td>
+                <td>{{association.descriptionAsso}}</td>
+                <td><input type="button" value="Modificar" class="btnEdit" ng-click="ctrl.getInfo(association)"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </section>
+  <section>
+    <div class="modal fade" id="modalAssociation" role="dialog" style="margin-top:100px">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4>Actualización de Datos de Asociación</h4>
+          </div>
+          <div class="modal-body" id="">
+            <form name="frmRegAssociation" autocomplete="off" novalidate>
+              <div class="row setup-content" id="step-1" ng-show="ctrl.activeStep(1)">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Primer Nombre del encargado</label>
+                    <input type="text" name="firstName" class="form-control" ng-model="ctrl.firstName" required pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                    <div ng-messages="frmRegAssociation.firstName.$error" ng-show="frmRegAssociation.$submitted || frmRegAssociation.firstName.$dirty || (frmRegAssociation.firstName.$invalid && frmRegAssociation.firstName.$touched)">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Segundo Nombre del encargado</label>
+                    <input type="text" name="secondName" class="form-control" ng-model="ctrl.secondName" pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                    <div ng-messages="frmRegAssociation.secondName.$error" ng-show="frmRegAssociation.$submitted || frmRegAssociation.secondName.$dirty || (frmRegAssociation.secondName.$invalid && frmRegAssociation.secondName.$touched)">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Primer Apellido del encargado</label>
+                    <input type="text" name="lastName" ng-model="ctrl.lastName" class="form-control" required pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}">
+                    <div ng-messages="frmRegAssociation.lastName.$error" ng-show="frmRegAssociation.$submitted || frmRegAssociation.lastName.$dirty || (frmRegAssociation.lastName.$invalid && frmRegAssociation.lastName.$touched)">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Segundo Apellido del encargado</label>
+                    <input type="text" name="secondlastName" ng-model="ctrl.secondlastName" class="form-control" pattern="[a-zA-ZáéíóúÁÉÍÓÚÑñ]{2,}" required>
+                    <div ng-messages="frmRegAssociation.secondlastName.$error" ng-show="frmRegAssociation.$submitted || frmRegAssociation.secondlastName.$dirty || (frmRegAssociation.secondlastName.$invalid && frmRegAssociation.secondlastName.$touched)">
+                    </div>
+                  </div>
+                  <div class="col-md-offset-8">
+                    <button class="btn btn-next btn-fill btn-skin" type="button" ng-click="ctrl.setStep(2)">Siguiente <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row setup-content" id="step-2" ng-show="ctrl.activeStep(2)">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Nombre jurídico del empresa</label>
+                    <input type="text" name="legal" ng-model="ctrl.legal" class="form-control" required>
+                    <div ng-messages="frmRegAssociation.legal.$error" ng-show="frmRegAssociation.$submitted || frmRegAssociation.legal.$dirty || (frmRegAssociation.legal.$invalid && frmRegAssociation.legal.$touched)">
+                      <div ng-hide="frmRegAssociation.legal.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Correo Eléctronico</label>
+                    <input type="text" name="email" ng-model="ctrl.email" class="form-control" required pattern="[a-z0-9._%+-]+@+[a-z0-9.-]+\.[a-z]{2,4}">
+                    <div ng-messages="frmRegAssociation.email.$error" ng-show="frmRegAssociation.$submitted || frmRegAssociation.email.$dirty || (frmRegAssociation.email.$invalid && frmRegAssociation.email.$touched)">
+                      <div ng-hide="frmRegAssociation.email.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label class="control-label">Tipo asociación</label>
+                    <select name="associationTipe" class="form-control" ng-model="ctrl.associationTipe">
+                          <option value="Religiosa">Religiosa</option>
+                          <option value="Deportiva">Deportiva</option>
+                          <option value="Bienestar">Bienestar Social</option>
+                          <option value="Ecologica">Ecológica</option>
+                          <option value="Educativa">Educativa</option>
+                        </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label">Descripción de la asociación</label>
+                    <textarea type="text" name="descriptionAsso" ng-model="ctrl.descriptionAsso" class="form-control" required></textarea>
+                    <div ng-messages="frmRegAssociation.descriptionAsso.$error" ng-show="frmRegAssociation.$submitted || frmRegAssociation.descriptionAsso.$dirty || (frmRegAssociation.descriptionAsso.$invalid && frmRegAssociation.descriptionAsso.$touched)">
+                      <div ng-hide="frmRegAssociation.descriptionAsso.$valid" ng-include="'./include/messages.html'"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="col-sm-6">
+                    <button class="btn btn-previous btn-fill btn-skin" type="button" ng-click="ctrl.setStep(1)"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Atrás</button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default" data-dismiss="modal" role="button">Cerrar</button>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default" value="Actualizar" ng-click="ctrl.update(Association)">Actualizar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="clearfix"></div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>

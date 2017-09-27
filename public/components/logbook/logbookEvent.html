@@ -1,0 +1,111 @@
+<div ng-include="'include/navAdmin.html'"></div>
+<section id="about" class="home-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center">
+            <h2 class="h-bold">Bitácora</h2>
+            <div class="divider-header"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-nav-tabs">
+    <div class="header header-success">
+      <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li>
+              <a href="#!/logbook" data-toggle="tab">
+													USUARIOS
+												</a>
+            </li>
+            <li>
+              <a href="#!/logbookAcademy" data-toggle="tab">
+													ACADEMIAS
+												</a>
+            </li>
+            <li class="active">
+              <a href="#!/logbookEvent" data-toggle="tab">
+													EVENTOS
+												</a>
+
+            </li>
+            <li>
+              <a href="#!/logbookSponsor" data-toggle="tab">
+													PATROCINADORES
+												</a>
+
+            </li>
+            <li>
+              <a href="#!/logbookAsoc" data-toggle="tab">
+													ASOCIACIONES
+												</a>
+
+            </li>
+            <li>
+              <a href="#!/logbookPlace" data-toggle="tab">
+													LUGARES
+												</a>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="tab-content text-center">
+        <div class="tab-pane active" id="events" ng-controller="eventController as eventCtrl">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>FECHA</th>
+                    <th>ACCIÓN</th>
+                    <th>NOMBRE</th>
+                    <th>DESCRIPCIÓN</th>
+                  </thead>
+                  <span><input id="search" type="text" name="nameFilter" ng-model="ctrl.nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar"></i></span>
+                  <tbody>
+                    <tr ng-repeat="event in eventCtrl.eventsList| filter:ctrl.nameFilter | orderBy:'regDate':true">
+                      <td>{{event.regDate | date: "short"}}</td>
+                      <td>{{event.accion}}</td>
+                      <td>{{event.eventName}}</td>
+                      <td>{{event.eventDescription}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+          <!-- <li><a href="#">Press release</a></li> -->
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>
+<script src="./js/logbook.js"></script>

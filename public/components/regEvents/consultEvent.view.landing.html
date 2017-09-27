@@ -1,0 +1,146 @@
+ <!-- Navigation -->
+  <div id="navigation">
+    <nav class="navbar navbar-custom" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="site-logo">
+              <a href="index.html" class="brand">FCT</a>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <i class="fa fa-bars"></i>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#intro">Inicio</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#junta">Junta Directiva</a></li>
+                <li class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-text">Eventos</span></a>
+                <ul class="dropdown-menu">
+                <li><a href="#events"><i class="fa"></i><span class="nav-text">Eventos</span></a></li>
+                <li><a href="#!/propEvent-Landing"><span class="nav-text">Propuesta de Eventos</span></a></li>
+                </ul>
+              </li>
+                <li><a href="#reserve">Reservar entradas</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                 <li><a href="#!/galleryLanding">Galería</a></li>
+                <li><a href="#!/login">Iniciar Sesión</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+<section id="about" class="form-section color-dark bg-white">
+  <div class="container marginbot-50">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <div class="animatedParent">
+          <div class="section-heading text-center" style="margin-top:100px">
+            <h2 class="h-bold">Lista de Eventos</h2>
+            <div class="divider-header"></div>
+          </div>
+          <div class="text-center col-sm-offset-10 col-xs-offset-6">
+            <span class="fa fa-search"><input id="search" type="text" name="eventNameFilter" ng-model="eventCtrl.eventNameFilter" placeholder="Buscar Eventos"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+  <div class="clearfix"></div>
+  <div class="container">
+    <div class="inline-block col-md-12 col-sm-12">
+      <div flex class="card-container manual-flip" ng-repeat="event in eventCtrl.eventsList |  filter : eventCtrl.eventNameFilter">
+        <div class="card col-md-3 col-sm-1">
+          <div class="front">
+            <div class="eventCard transition">
+              <figure class="snip0057 red">
+                <figcaption>
+                  <h2>{{event.eventName}}</h2>
+                  <h2>{{event.eventStartDate | date:'yyyy'}}</h2>
+                  <p>Del {{event.eventStartDate | date:'MM/dd'}} al {{event.eventEndDate | date:'MM/dd'}}</p>
+                  <div class="icons"><a href="#!/reserve">Tickets:<i class="ion-ios-home">¢{{event.eventInscriptionCost}}</i></a></div>
+                </figcaption>
+                <div class="image"><img src="{{event.eventImage}}" alt="sample4" /></div>
+                <div class="positionRight" onclick="rotateCard(this)">Más información</div>
+              </figure>
+            </div>
+          </div>
+          <div class="back">
+            <div class="eventCard transition">
+              <figure class="snip0058 red">
+                <figcaption>
+                  <p><b>Inscripciones:</b> ¢{{event.eventInscriptionCost}}</p>
+                  <p><b>Lugar:</b> {{event.eventLocationName}}</p>
+                  <p><b>Evento:</b> {{event.eventType}}</p>
+                  <div class="icons"><a href="#"><i class="ion-ios-home"></i></a><a href="#"><i class="ion-ios-email"></i></a><a href="#"><i class="ion-ios-telephone"></i></a></div>
+                </figcaption>
+                <div class="image">
+                  <ng-map center="[{{event.lat}}, {{event.log}}]" default-style="false" style="height: 100%" alt="sample4" ></ng-map>
+                </div>
+                <div class="positionLeft" onclick="rotateCard(this)">Volver</div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<br><br>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right copyright">
+        &copy;Copyright - BlueDevs All Rights Reserved
+        <div class="credits">
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/form2.js"></script>
+
+<script type="text/javascript">
+  function rotateCard(btn) {
+    var $card = $(btn).closest('.card-container');
+    console.log($card);
+    if ($card.hasClass('hover')) {
+      $card.removeClass('hover');
+    } else {
+      $card.addClass('hover');
+    }
+  }
+</script>
+
+<script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-46172202-4', 'auto');
+  ga('send', 'pageview');
+</script>
